@@ -41,7 +41,10 @@ io.on('connection', (socket) => {
 });
 
 // Chạy server trên Port do môi trường cấp (Render) hoặc 3000 (Local)
+// Chạy server trên Port do môi trường cấp (Render)
 const PORT = process.env.PORT || 3000;
-server.listen(PORT, () => {
+
+// Thêm '0.0.0.0' để ép Server mở mạng ra toàn cầu, tránh lỗi 502 của Render
+server.listen(PORT, '0.0.0.0', () => {
     console.log(`🚀 Trạm Điều Phối WebSockets đang chạy tại cổng ${PORT}`);
 });
